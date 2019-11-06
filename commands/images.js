@@ -44,7 +44,9 @@ module.exports.run = async (bot, message, args) => {
             // Send result
             let iEmbed = new Discord.RichEmbed()
             .setColor(colors.orange)
-            .setImage(urls[Math.floor(Math.random()* urls.length)]);
+            .setImage(urls[Math.floor(Math.random()* urls.length)])
+            .setTimestamp()
+            .setFooter('Sick Bot', bot.user.displayAvatarURL);
             message.channel.send({embed: iEmbed});
 
         });
