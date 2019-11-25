@@ -9,14 +9,14 @@ const colors = require("../colors.json");
 module.exports.run = async (bot, message, args) => {
     let msg = await message.channel.send("Searching...")
 
-    fetch("https://apis.duncte123.me/meme")
+    fetch("https://some-random-api.ml/meme")
     .then( res => res.json()).then(body => {
         if(!body) return message.reply("Unable to find image. Please try again!")
 
         let mEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
-        .setTitle(body.data.title)
-        .setImage(body.data.image)
+        .setTitle(body.caption)
+        .setImage(body.image)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL);
         message.channel.send({embed: mEmbed});
