@@ -9,14 +9,15 @@ const colors = require("../colors.json");
 module.exports.run = async (bot, message, args) => {
     let msg = await message.channel.send("Searching...")
 
-    fetch("https://some-random-api.ml/meme")
+    fetch("https://meme-api.herokuapp.com/gimme")
     .then( res => res.json()).then(body => {
         if(!body) return message.reply("Unable to find image. Please try again!")
 
         let mEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
-        .setTitle(body.caption)
-        .setImage(body.image)
+        .setTitle(body.title)
+        .setURL(body.postLink)
+        .setImage(body.url)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL);
         message.channel.send({embed: mEmbed});
