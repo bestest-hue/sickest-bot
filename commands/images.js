@@ -43,6 +43,8 @@ module.exports.run = async (bot, message, args) => {
      
             // Send result
             let iEmbed = new Discord.RichEmbed()
+            .setTitle('Open original')
+            .setURL(urls[Math.floor(Math.random()* urls.length)])
             .setColor(colors.orange)
             .setImage(urls[Math.floor(Math.random()* urls.length)])
             .setTimestamp()
