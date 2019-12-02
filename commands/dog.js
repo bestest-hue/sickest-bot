@@ -14,6 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
         let dEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
+        .setTitle('Open original')
+        .setURL(body.message)
         .setImage(body.message)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL)
