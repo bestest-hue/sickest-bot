@@ -13,15 +13,25 @@ module.exports.run = async (bot, message, args) => {
         console.log(body.message)
         if(!{body}) return message.channel.send("Question not found. Please try again.")
 
-        let tEmbed = new Discord.RichEmbed()
+        let tqEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
         .setTitle(body.results[0].question)
-        .setDescription(`**Answer: ||${body.results[0].correct_answer}||**`)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL)
-        message.channel.send({embed: tEmbed});
+        message.channel.send({embed: tqEmbed}).then(r => r.delete('21000'));
 
         msg.delete();
+
+        setTimeout(function() {
+            console.log('Answer sent!');
+            let taEmbed = new Discord.RichEmbed()
+            .setColor(colors.orange)
+            .setTitle(body.results[0].correct_answer)
+            .setTimestamp()
+            .setFooter('Sick Bot', bot.user.displayAvatarURL)
+            message.channel.send({embed: taEmbed}).then(r => r.delete('10000'));
+        }, 20000);
+
 }
 
 module.exports.config = {
