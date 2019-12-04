@@ -21,6 +21,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send({embed: tqEmbed}).then(r => r.delete('21000'));
 
         msg.delete();
+        message.delete();
 
         setTimeout(function() {
             console.log('Answer sent!');
@@ -29,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
             .setTitle(body.results[0].correct_answer)
             .setTimestamp()
             .setFooter('Sick Bot', bot.user.displayAvatarURL)
-            message.channel.send({embed: taEmbed}).then(r => r.delete('10000'));
+            message.channel.send({embed: taEmbed});
         }, 20000);
 
 }
