@@ -9,13 +9,13 @@ module.exports.run = async (bot, message, args) => {
     let msg = await message.channel.send("Searching...")
 
         let {body} = await superagent
-        .get("https://opentdb.com/api.php?amount=1&category=9&type=multiple")
+        .get("https://elderly-property.glitch.me/api/questions/random")
         console.log(body.message)
         if(!{body}) return message.channel.send("Question not found. Please try again.")
 
         let tqEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
-        .setTitle(body.results[0].question)
+        .setTitle(body.question)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL)
         message.channel.send({embed: tqEmbed}).then(r => r.delete('21000'));
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
             console.log('Answer sent!');
             let taEmbed = new Discord.RichEmbed()
             .setColor(colors.orange)
-            .setTitle(body.results[0].correct_answer)
+            .setTitle(body.answer)
             .setTimestamp()
             .setFooter('Sick Bot', bot.user.displayAvatarURL)
             message.channel.send({embed: taEmbed});
