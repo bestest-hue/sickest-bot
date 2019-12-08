@@ -20,7 +20,10 @@ module.exports.run = async (bot, message, args) => {
         .setImage(body.url)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL);
-        message.channel.send({embed: mEmbed});
+        message.channel.send({embed: mEmbed}).then(message => {
+            message.react('⬆️')
+            message.react('⬇️')
+          });
         
         msg.delete();
     })
