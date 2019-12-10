@@ -6,7 +6,10 @@ const fetch = require('node-fetch');
 const botconfig = require("../botconfig.json");
 const colors = require("../colors.json");
 
+
+
 module.exports.run = async (bot, message, args) => {
+
     let msg = await message.channel.send("Searching...")
 
     fetch("https://meme-api.herokuapp.com/gimme")
@@ -20,10 +23,10 @@ module.exports.run = async (bot, message, args) => {
         .setImage(body.url)
         .setTimestamp()
         .setFooter('Sick Bot', bot.user.displayAvatarURL);
-        message.channel.send({embed: mEmbed}).then(message => {
-            message.react('⬆️')
-            message.react('⬇️')
-          });
+        message.channel.send({embed: mEmbed}).then(async function (message) {
+            await message.react("⬆️")
+            await message.react("⬇️")
+        });
         
         msg.delete();
     })
