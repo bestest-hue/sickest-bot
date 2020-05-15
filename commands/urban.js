@@ -7,8 +7,8 @@ const botconfig = require("../botconfig.json");
 const colors = require("../colors.json");
 
 module.exports.run = async (bot, message, args) => {
-    if(args < 1 || !["random", "search"].includes(args[0])) return message.channel.send("`!urban <search|random> (query)`")
-    let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
+    if(args < 1 || !["random", "search"].includes(args[0])) return message.channel.send("`-urban <search|random> (query)`")
+    let image = "https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2018-01-11/297387706245_85899a44216ce1604c93_512.jpg";
     let search = args[1] ? urban(args.slice(1).join(" ")) : urban.random();
         try {
             search.first(res => {
@@ -19,7 +19,6 @@ module.exports.run = async (bot, message, args) => {
                 .setColor(colors.orange)
                 .setAuthor("Urban Dictionary", image)
                 .setTitle(`${word}`)
-                .setThumbnail(image)
                 .setDescription(`**Definition:** ${definition || "No definition"}
                 **Example:** ${example || "No example"}
                 **Link:** [link to ${word}](${permalink || "https://www.urbandictionary.com/" })`)
