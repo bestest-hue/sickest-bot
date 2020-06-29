@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
             $ = cheerio.load(responseBody);
      
      
-            let links = $(".image a.link");
+            let links = $(".image-preview-picture-link");
      
             let urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
            
