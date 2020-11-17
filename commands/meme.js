@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
     fetch("https://meme-api.herokuapp.com/gimme")
     .then( res => res.json()).then(body => {
-        if(!body) return message.reply("Unable to find image. Please try again!")
+        if(!body) return message.reply("Unable to find a meme. Please try again!")
 
         let mEmbed = new Discord.RichEmbed()
         .setColor(colors.orange)
@@ -25,6 +25,7 @@ module.exports.run = async (bot, message, args) => {
         .setFooter('Sick Bot', bot.user.displayAvatarURL);
         message.channel.send({embed: mEmbed}).then(async function (message) {
             await message.react("⬆️")
+            await message.react("↕")
             await message.react("⬇️")
         });
         
