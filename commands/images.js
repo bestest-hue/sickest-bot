@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         let msg = await message.channel.send("Searching...")
        
         let options = {
-            url: "http://results.dogpile.com/serp?qc=images&q=" + search,
+            url: "https://www.picsearch.com/index.cgi?q=" + search,
             method: "GET",
             headers: {
                 "Accept": "text/html",
@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
             $ = cheerio.load(responseBody);
      
      
-            let links = $(".image a.link");
+            let links = $(".iusc");
      
             let urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
            
