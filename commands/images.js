@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         let msg = await message.channel.send("Searching...")
        
         let options = {
-            url: "https://www.picsearch.com/index.cgi?q=" + search,
+            url: "http://results.dogpile.com/serp?qc=images&q=" + search,
             method: "GET",
             headers: {
                 "Accept": "text/html",
