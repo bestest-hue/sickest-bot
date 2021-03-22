@@ -8,6 +8,13 @@ const botconfig = require("../botconfig.json");
 const colors = require("../colors.json");
 
 module.exports.run = async (bot, message, args) => {
+
+    const arrayOfUsersIds = ['249290169838993408'];
+
+    for (let i = 0; i < arrayOfUsersIds.length; i++) {
+    if (message.author.id === arrayOfUsersIds[i]) return message.reply('No');
+    };
+
         let parts = message.content.split(" ");
         let search = parts.slice(1).join(" ");
         let msg = await message.channel.send("Searching...")
